@@ -2,10 +2,10 @@
 
 Create unsigned JWTs easy.
 
-https://hoto.github.io/jwt-forge?claims=eyIwIjp7ImtleSI6ImEiLCJ2YWx1ZSI6IjEifSwiMSI6eyJrZXkiOiJiIiwidmFsdWUiOiIyIn0sIjIiOnsia2V5IjoiYyIsInZhbHVlIjoiMyJ9LCIzIjp7ImtleSI6ImMiLCJ2YWx1ZSI6IjQifX0%3D
+https://hoto.github.io/jwt-forge?claims=eyIyIjp7ImtleSI6ImEiLCJ2YWx1ZSI6IjEifSwiMyI6eyJrZXkiOiJiIiwidmFsdWUiOiIyIn0sIjQiOnsia2V5IjoiYiIsInZhbHVlIjoiMyJ9fQ%3D%3D
 
 ### Development
 
     npm run dev
 
-    http://localhost:3000/?claims=eyIwIjp7ImtleSI6ImEiLCJ2YWx1ZSI6IjEifSwiMSI6eyJrZXkiOiJiIiwidmFsdWUiOiIyIn0sIjIiOnsia2V5IjoiYyIsInZhbHVlIjoiMyJ9LCIzIjp7ImtleSI6ImMiLCJ2YWx1ZSI6IjQifX0%3D
+    http://localhost:3000/?claims=eyIyIjp7ImtleSI6ImEiLCJ2YWx1ZSI6IjEifSwiMyI6eyJrZXkiOiJiIiwidmFsdWUiOiIyIn0sIjQiOnsia2V5IjoiYiIsInZhbHVlIjoiMyJ9fQ%3D%3D

@@ -1,45 +1,46 @@
-import Head from "next/head";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-import base64 from "../components/base64";
-import ParamsFields from "../components/ParamsFields";
-import ParamField from "../components/ParamField";
-import AddParamButton from "../components/AddParamButton";
+import Head from 'next/head'
+import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
+import base64 from '../components/base64'
+import ParamsFields from '../components/ParamsFields'
+import ParamField from '../components/ParamField'
+import AddParamButton from '../components/AddParamButton'
+import JsonView from '../components/JsonView'
 
 export default function Home() {
-  const router = useRouter();
-  const [hasInitialised, setHasInitialised] = useState<boolean>(false);
-  const [initialClaims, setInitialClaims] = useState<object>({});
-  const [updatedClaims, setUpdatedClaims] = useState<object>({});
-  const [json, setJson] = useState<object>({});
+  const router = useRouter()
+  const [hasInitialised, setHasInitialised] = useState<boolean>(false)
+  const [initialClaims, setInitialClaims] = useState<object>({})
+  const [updatedClaims, setUpdatedClaims] = useState<object>({})
+  const [payload, setPayload] = useState<object>({})
 
   useEffect(() => {
     if (!hasInitialised && router.query.claims) {
-      const claimsJson = base64.decode(router.query.claims);
-      setInitialClaims(JSON.parse(claimsJson));
-      setUpdatedClaims(JSON.parse(claimsJson));
-      setHasInitialised(true);
+      const claimsJson = base64.decode(router.query.claims)
+      setInitialClaims(JSON.parse(claimsJson))
+      setUpdatedClaims(JSON.parse(claimsJson))
+      setHasInitialised(true)
     }
-  }, [router.query.claims]);
+  }, [router.query.claims])
 
   useEffect(() => {
     const json = Object.entries(updatedClaims).reduce(
       (acc, [key, { key: k, value: v }]) => {
         if (acc[k]) {
           if (Array.isArray(acc[k])) {
-            acc[k].push(v);
+            acc[k].push(v)
           } else {
-            acc[k] = [acc[k], v];
+            acc[k] = [acc[k], v]
           }
         } else {
-          acc[k] = v;
+          acc[k] = v
         }
-        return acc;
+        return acc
       },
-      {},
-    );
-    setJson(json);
-  }, [updatedClaims]);
+      {}
+    )
+    setPayload(json)
+  }, [updatedClaims])
 
   return (
     <>
@@ -72,23 +73,23 @@ export default function Home() {
                   onFieldChange={(
                     fieldId: string,
                     key: string,
-                    value: string,
+                    value: string
                   ) => {
                     const newClaims = {
                       ...updatedClaims,
                       [fieldId]: { key, value },
-                    };
-                    setUpdatedClaims(newClaims);
+                    }
+                    setUpdatedClaims(newClaims)
                     router.push({
                       query: {
                         claims: base64.encode(JSON.stringify(newClaims)),
                       },
-                    });
+                    })
                   }}
                   onFieldRemoval={(fieldId: string) => {
-                    const newClaims = { ...updatedClaims };
-                    delete newClaims[fieldId];
-                    setUpdatedClaims(newClaims);
+                    const newClaims = { ...updatedClaims }
+                    delete newClaims[fieldId]
+                    setUpdatedClaims(newClaims)
                     router
                       .push({
                         query: {
@@ -96,8 +97,8 @@ export default function Home() {
                         },
                       })
                       .then(() => {
-                        setInitialClaims(newClaims);
-                      });
+                        setInitialClaims(newClaims)
+                      })
                   }}
                 />
               ))}
@@ -110,18 +111,18 @@ export default function Home() {
                     ? 0
                     : Math.max(
                         ...Object.keys(updatedClaims).map((key) =>
-                          parseInt(key),
-                        ),
-                      );
-                const i = highestKey + 1;
+                          parseInt(key)
+                        )
+                      )
+                const i = highestKey + 1
                 const newClaims = {
                   ...updatedClaims,
                   [i]: {
-                    key: "",
-                    value: "",
+                    key: '',
+                    value: '',
                   },
-                };
-                setUpdatedClaims(newClaims);
+                }
+                setUpdatedClaims(newClaims)
                 router
                   .push({
                     query: {
@@ -129,8 +130,8 @@ export default function Home() {
                     },
                   })
                   .then(() => {
-                    setInitialClaims(newClaims);
-                  });
+                    setInitialClaims(newClaims)
+                  })
               }}
             />
           </div>
@@ -140,9 +141,9 @@ export default function Home() {
           <pre>{JSON.stringify(updatedClaims, null, 2)}</pre>
         </div>
         <div className="col-span-3">
-          <pre>{JSON.stringify(json, null, 2)}</pre>
+          <JsonView payload={payload} />
         </div>
       </main>
     </>
-  );
+  )
 }
