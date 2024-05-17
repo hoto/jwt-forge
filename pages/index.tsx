@@ -6,6 +6,7 @@ import ParamsFields from '../components/ParamsFields'
 import ParamField from '../components/ParamField'
 import AddParamButton from '../components/AddParamButton'
 import JsonView from '../components/JsonView'
+import JwtView from '../components/JwtView'
 
 export default function Home() {
   const router = useRouter()
@@ -13,6 +14,10 @@ export default function Home() {
   const [initialClaims, setInitialClaims] = useState<object>({})
   const [updatedClaims, setUpdatedClaims] = useState<object>({})
   const [payload, setPayload] = useState<object>({})
+  const header = {
+    typ: 'JWT',
+    alg: 'none',
+  }
 
   useEffect(() => {
     if (!hasInitialised && router.query.claims) {
@@ -49,13 +54,13 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="container mx-auto grid grid-cols-6 justify-items-center px-4 py-8">
+      <main className="container mx-auto grid grid-cols-6 justify-items-center px-4 py-8 sm:w-full md:w-3/4 xl:w-2/3 2xl:w-1/2">
         <h1 className="col-span-6  text-3xl font-bold ">JWT Forge</h1>
         <h3 className="col-span-6 mb-10 text-xs font-light ">
           Create unsigned JWT easy.
         </h3>
 
-        <div className="col-span-6">
+        <div className="col-span-6 w-full">
           <ParamsFields>
             {Object.entries(initialClaims)
               .map((param, index) => ({
@@ -103,7 +108,7 @@ export default function Home() {
                 />
               ))}
           </ParamsFields>
-          <div className="mt-3 grid justify-items-end">
+          <div className="my-4 grid justify-items-end">
             <AddParamButton
               onClick={() => {
                 const highestKey =
@@ -136,12 +141,11 @@ export default function Home() {
             />
           </div>
         </div>
-
-        <div className="col-span-3">
-          <pre>{JSON.stringify(updatedClaims, null, 2)}</pre>
+        <div className="col-span-6 w-full border border-slate-800 md:col-span-3">
+          <JsonView header={header} payload={payload} />
         </div>
-        <div className="col-span-3">
-          <JsonView payload={payload} />
+        <div className="col-span-6 w-full border-b border-l border-r border-slate-800 md:col-span-3 md:border md:border-l-0">
+          <JwtView header={header} payload={payload} />
         </div>
       </main>
     </>
