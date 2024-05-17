@@ -10,32 +10,18 @@ const AddDropdownButtons: FC<{ onClick: Function }> = ({ onClick }) => {
         <PlusIcon />
       </button>
 
-      <ul className="absolute right-0 top-0 hidden items-center rounded-3xl bg-gradient-to-br from-green-600 to-blue-600 group-hover:inline-flex">
-        <li className="rounded-full py-2 pl-4 pr-2.5 ring-inset ring-slate-100 hover:ring-2">
+      <ul className="absolute right-0 top-0 hidden items-center rounded-3xl bg-gradient-to-br from-green-600 to-blue-600 *:rounded-full *:ring-inset *:ring-slate-100 group-hover:inline-flex">
+        <li className="py-2 pl-4 pr-2.5 ring-inset ring-slate-100 hover:ring-2">
           iat
         </li>
-        <li className="rounded-full p-2 ring-inset ring-slate-100 hover:ring-2">
-          exp
-        </li>
-        <li className="rounded-full px-4 py-2 ring-inset ring-slate-100 hover:ring-2">
-          jti
-        </li>
-        <li className="rounded-full px-3 py-2 ring-inset ring-slate-100 hover:ring-2">
-          iss
-        </li>
-        <li className="rounded-full p-2 ring-inset ring-slate-100 hover:ring-2">
-          cid
-        </li>
-        <li className="rounded-full p-2 ring-inset ring-slate-100 hover:ring-2">
-          sub
-        </li>
-        <li className="rounded-full p-2 ring-inset ring-slate-100 hover:ring-2">
-          aud
-        </li>
-        <li>
-          <div className="rounded-full px-2.5 py-2">
-            <PlusIcon />
-          </div>
+        <li className="p-2 hover:ring-2">exp</li>
+        <li className="px-4 py-2 hover:ring-2">jti</li>
+        <li className="px-3 py-2 hover:ring-2">iss</li>
+        <li className="p-2 hover:ring-2">cid</li>
+        <li className="p-2 hover:ring-2">sub</li>
+        <li className="p-2 hover:ring-2">aud</li>
+        <li className="p-2.5 hover:ring-2">
+          <PlusIcon />
         </li>
       </ul>
     </div>
