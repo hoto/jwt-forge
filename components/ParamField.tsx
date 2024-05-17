@@ -1,19 +1,19 @@
-import { FC, useEffect, useState } from "react";
-import RemoveParamButton from "../components/RemoveParamButton";
+import { FC, useEffect, useState } from 'react'
+import RemoveParamButton from '../components/RemoveParamButton'
 
 const ParamField: FC<{
-  fieldId: string;
-  inputKey: string;
-  inputValue: string;
-  onFieldChange: Function;
-  onFieldRemoval: Function;
+  fieldId: string
+  inputKey: string
+  inputValue: string
+  onFieldChange: Function
+  onFieldRemoval: Function
 }> = ({ fieldId, inputKey, inputValue, onFieldChange, onFieldRemoval }) => {
-  const [key, setKey] = useState<string>(inputKey);
-  const [value, setValue] = useState<string>(inputValue);
+  const [key, setKey] = useState<string>(inputKey)
+  const [value, setValue] = useState<string>(inputValue)
 
   useEffect(() => {
-    onFieldChange(fieldId, key, value);
-  }, [key, value]);
+    onFieldChange(fieldId, key, value)
+  }, [key, value])
 
   return (
     <>
@@ -24,7 +24,7 @@ const ParamField: FC<{
           placeholder="Field name"
           defaultValue={key}
           onChange={(event) => {
-            setKey(event.target.value);
+            setKey(event.target.value)
           }}
         />
       </div>
@@ -35,13 +35,13 @@ const ParamField: FC<{
           placeholder="Field value"
           defaultValue={value}
           onChange={(event) => {
-            setValue(event.target.value);
+            setValue(event.target.value)
           }}
         />
         <RemoveParamButton onBtnClick={() => onFieldRemoval(fieldId)} />
       </div>
     </>
-  );
-};
+  )
+}
 
-export default ParamField;
+export default ParamField
