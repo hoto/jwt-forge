@@ -10,14 +10,14 @@ const AddDropdownButtons: FC<{ onClick: Function }> = ({ onClick }) => {
         <PlusIcon />
       </button>
 
-      <ul className="absolute right-0 top-0 hidden rounded-3xl bg-gradient-to-br from-green-600 to-blue-600 *:p-2  group-hover:inline-flex">
-        <li className="ml-1">aud</li>
-        <li>sub</li>
-        <li>cid</li>
-        <li>iss</li>
+      <ul className="absolute right-0 top-0 hidden  rounded-3xl bg-gradient-to-br from-green-600 to-blue-600  *:p-2 group-hover:inline-flex">
+        <li className="ml-2">iat</li>
         <li>exp</li>
-        <li>iat</li>
         <li>jti</li>
+        <li>iss</li>
+        <li>cid</li>
+        <li>sub</li>
+        <li>aud</li>
         <li>
           <div className="  p-0.5  ">
             <PlusIcon />
