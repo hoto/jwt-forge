@@ -17,7 +17,7 @@ const AddDropdownButtons: FC<{ onClick: Function }> = ({ onClick }) => {
         <li className="p-2 hover:ring-2">exp</li>
         <li className="px-4 py-2 hover:ring-2">jti</li>
         <li className="px-3 py-2 hover:ring-2">iss</li>
-        <li className="p-2 hover:ring-2">cid</li>
+        <li className="px-2.5 py-2 hover:ring-2">cid</li>
         <li className="p-2 hover:ring-2">sub</li>
         <li className="p-2 hover:ring-2">aud</li>
         <li className="p-2.5 hover:ring-2">
