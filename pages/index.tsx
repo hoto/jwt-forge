@@ -60,7 +60,7 @@ export default function Home() {
           <div className="flex gap-1">
             <Link
               href="https://github.com/hoto/jwt-forge"
-              className="hover:text-fuchsia-500"
+              className="hover:text-blue-500"
             >
               <svg
                 className="h-10"
