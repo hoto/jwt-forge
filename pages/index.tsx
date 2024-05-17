@@ -1,12 +1,12 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
-import base64 from '../components/base64'
 import ParamsFields from '../components/ParamsFields'
 import ParamField from '../components/ParamField'
 import AddParamButton from '../components/AddParamButton'
 import JsonView from '../components/JsonView'
 import JwtView from '../components/JwtView'
+import base64url from 'base64url'
 
 export default function Home() {
   const router = useRouter()
@@ -21,7 +21,7 @@ export default function Home() {
 
   useEffect(() => {
     if (!hasInitialised && router.query.claims) {
-      const claimsJson = base64.decode(router.query.claims)
+      const claimsJson = base64url.decode(router.query.claims as string)
       setInitialClaims(JSON.parse(claimsJson))
       setUpdatedClaims(JSON.parse(claimsJson))
       setHasInitialised(true)
@@ -87,7 +87,7 @@ export default function Home() {
                     setUpdatedClaims(newClaims)
                     router.push({
                       query: {
-                        claims: base64.encode(JSON.stringify(newClaims)),
+                        claims: base64url.encode(JSON.stringify(newClaims)),
                       },
                     })
                   }}
@@ -98,7 +98,7 @@ export default function Home() {
                     router
                       .push({
                         query: {
-                          claims: base64.encode(JSON.stringify(newClaims)),
+                          claims: base64url.encode(JSON.stringify(newClaims)),
                         },
                       })
                       .then(() => {
@@ -131,7 +131,7 @@ export default function Home() {
                 router
                   .push({
                     query: {
-                      claims: base64.encode(JSON.stringify(newClaims)),
+                      claims: base64url.encode(JSON.stringify(newClaims)),
                     },
                   })
                   .then(() => {
