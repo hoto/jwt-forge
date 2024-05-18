@@ -4,7 +4,7 @@ const RemoveParamButton: FC<{ onBtnClick: Function }> = ({ onBtnClick }) => {
   return (
     <button
       type="button"
-      className="inline-flex h-10 w-10 items-center rounded-full bg-gradient-to-r from-purple-700 to-rose-500 p-2.5 text-center text-sm font-medium text-white hover:bg-gradient-to-l focus:ring-4 focus:ring-purple-200"
+      className="inline-flex h-10 w-10 items-center rounded-full bg-gradient-to-br from-purple-700 to-rose-500 p-2.5 text-white hover:bg-gradient-to-l focus:ring-4 focus:ring-purple-200"
       onClick={() => onBtnClick()}
     >
       <MinusIcon />
