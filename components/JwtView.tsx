@@ -28,6 +28,7 @@ const JwtView: FC<{ header: object; payload: object }> = ({
         >
           <img src="/view-on-jwt-io.svg" alt="View on jwt.io" />
         </Link>
+        {process.env.NODE_ENV === 'production'?'yes':'no'}
       </div>
     </div>
   )
