@@ -8,6 +8,7 @@ import JwtView from '../components/JwtView'
 import base64url from 'base64url'
 import Link from 'next/link'
 import AddDropdownButtons from '../components/AddDropdownButtons'
+import basePath from '../services/basePath'
 
 export default function Home() {
   const router = useRouter()
@@ -52,7 +53,7 @@ export default function Home() {
     <>
       <Head>
         <title>JWT Forge</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href={`${basePath}/favicon.ico`} />
       </Head>
 
       <main className="container mx-auto grid grid-cols-6 justify-items-center px-4 py-8 sm:w-full md:w-3/4 xl:w-2/3 2xl:w-1/2">
