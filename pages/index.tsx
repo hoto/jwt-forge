@@ -3,7 +3,6 @@ import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import ParamsFields from '../components/ParamsFields'
 import ParamField from '../components/ParamField'
-import AddParamButton from '../components/AddParamButton'
 import JsonView from '../components/JsonView'
 import JwtView from '../components/JwtView'
 import base64url from 'base64url'
@@ -128,39 +127,34 @@ export default function Home() {
               ))}
           </ParamsFields>
           <div className="my-4 grid justify-items-end">
-            {/*<AddParamButton*/}
-            {/*  onClick={() => {*/}
-            {/*    const highestKey =*/}
-            {/*      Object.keys(updatedClaims).length === 0*/}
-            {/*        ? 0*/}
-            {/*        : Math.max(*/}
-            {/*            ...Object.keys(updatedClaims).map((key) =>*/}
-            {/*              parseInt(key)*/}
-            {/*            )*/}
-            {/*          )*/}
-            {/*    const i = highestKey + 1*/}
-            {/*    const newClaims = {*/}
-            {/*      ...updatedClaims,*/}
-            {/*      [i]: {*/}
-            {/*        key: '',*/}
-            {/*        value: '',*/}
-            {/*      },*/}
-            {/*    }*/}
-            {/*    setUpdatedClaims(newClaims)*/}
-            {/*    router*/}
-            {/*      .push({*/}
-            {/*        query: {*/}
-            {/*          claims: base64url.encode(JSON.stringify(newClaims)),*/}
-            {/*        },*/}
-            {/*      })*/}
-            {/*      .then(() => {*/}
-            {/*        setInitialClaims(newClaims)*/}
-            {/*      })*/}
-            {/*  }}*/}
-            {/*/>*/}
             <AddDropdownButtons
-              onClick={() => {
-                console.log('xxx click()')
+              onClick={(keyValue: string) => {
+                const highestKey =
+                  Object.keys(updatedClaims).length === 0
+                    ? 0
+                    : Math.max(
+                        ...Object.keys(updatedClaims).map((key) =>
+                          parseInt(key)
+                        )
+                      )
+                const i = highestKey + 1
+                const newClaims = {
+                  ...updatedClaims,
+                  [i]: {
+                    key: keyValue,
+                    value: '',
+                  },
+                }
+                setUpdatedClaims(newClaims)
+                router
+                  .push({
+                    query: {
+                      claims: base64url.encode(JSON.stringify(newClaims)),
+                    },
+                  })
+                  .then(() => {
+                    setInitialClaims(newClaims)
+                  })
               }}
             />
           </div>
