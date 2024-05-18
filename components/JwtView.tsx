@@ -26,12 +26,16 @@ const JwtView: FC<{ header: object; payload: object }> = ({
           className="text-sm font-light hover:text-blue-500 hover:underline"
           target="_blank"
         >
-          <img src="/view-on-jwt-io.svg" alt="View on jwt.io" />
+          <img
+            src={`${isProd ? '/jwt-forge' : ''}/view-on-jwt-io.svg`}
+            alt="View on jwt.io"
+          />
         </Link>
-        {process.env.NODE_ENV === 'production'?'yes':'no'}
       </div>
     </div>
   )
 }
+
+const isProd = process.env.NODE_ENV === 'production'
 
 export default JwtView
