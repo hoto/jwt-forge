@@ -1,6 +1,7 @@
 import { FC } from 'react'
 import base64url from 'base64url'
 import Link from 'next/link'
+import basePath from '../services/basePath'
 
 const JwtView: FC<{ header: object; payload: object }> = ({
   header,
@@ -26,16 +27,11 @@ const JwtView: FC<{ header: object; payload: object }> = ({
           className="text-sm font-light hover:text-blue-500 hover:underline"
           target="_blank"
         >
-          <img
-            src={`${isProd ? '/jwt-forge' : ''}/view-on-jwt-io.svg`}
-            alt="View on jwt.io"
-          />
+          <img src={`${basePath}/view-on-jwt-io.svg`} alt="View on jwt.io" />
         </Link>
       </div>
     </div>
   )
 }
-
-const isProd = process.env.NODE_ENV === 'production'
 
 export default JwtView
