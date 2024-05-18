@@ -62,7 +62,7 @@ export default function Home() {
             <div>
               <Link href={'https://www.flaticon.com/free-icons/blacksmith'} target={'_blank'}>
                 <img
-                  src="/blacksmith.png"
+                  src={`${basePath}/blacksmith.png`}
                   alt="Blacksmith icons created by Freepik - Flaticon"
                   width={50}
                 />
