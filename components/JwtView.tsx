@@ -14,7 +14,7 @@ const JwtView: FC<{ header: object; payload: object }> = ({
         <span className="text-sm font-light ">JWT</span>
       </div>
 
-      <div className="break-all px-5 pt-4 mb-16">
+      <div className="mb-16 break-all px-5 pt-4">
         <span className="overflow-none text-wrap text-rose-500">
           {headerPart}
         </span>
